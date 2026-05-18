@@ -5,6 +5,18 @@
         <link rel="stylesheet" href="Foodie.css">
     </head>
     <body>
-
+        <form onsubmit="createComment(); return false;">
+            <label for="nickname">Nickname:</label>
+            <input type="text" id="nickname">
+            <br>
+            <label for="food">Food:</label>
+            <input type="text" id="food">
+            <br>
+            <label for="comment">Comment:</label>
+            <input type="text" id="comment">
+            <br>
+            <br>
+            <input type="submit" name="Add Food">
+        </form>
     </body>
 </html>

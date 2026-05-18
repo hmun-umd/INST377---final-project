@@ -33,10 +33,10 @@ app.use((req,res) => {
     res.status(404).sendFile('public/404.html', { root: __dirname });
 });
 
-app.get('/customers', async (req, res) => {
-    console.log('Attempting to get all customers!');
+app.get('/reviews', async (req, res) => {
+    console.log('Attempting to get all reviews!');
 
-    const { data, error } = await supabase.from('customer').select();
+    const { data, error } = await supabase.from('review').select();
 
     if(error){
         console.log(`Error: ${error}`);
@@ -48,27 +48,18 @@ app.get('/customers', async (req, res) => {
     }   
 });
 
-app.post('/customer', async (req, res) => { //post = add data
-    console.log('Adding Customer');
+app.post('/review', async (req, res) => { //post = add data
+    console.log('Adding Review');
     console.log(`Request: ${JSON.stringify(req.body)}`);
 
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    const state =  req.body.state;
+    const nickname = req.body.nickname;
+    const food = req.body.food;
+    const comment =  req.body.comment;
 
-    if(!isValidStateAbbreviation(state)) {
-        console.log(`State: ${state} is invalid`);
-        res.statusCode = 400;
-        res.json({
-            message: `${state} is not a valid 2 Letter Abbreviation for State`,
-        });
-        return;
-    }
-
-    const { data, error } = await supabase.from('customer').insert({
-        customer_first_name: firstName,
-        customer_last_name: lastName,
-        customer_state: state,
+    const { data, error } = await supabase.from('review').insert({
+        review_nickname: nickname,
+        review_food_loc: food,
+        review_comment: comment,
     })
     .select();
 
