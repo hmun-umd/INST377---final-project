@@ -1,3 +1,5 @@
+console.log(`check ${document.getElementById('food').value}`);
+
 async function createComment() {
     await fetch('/review', {
         method: 'POST',
@@ -8,9 +10,8 @@ async function createComment() {
         }),
         headers: {
             'content-type': 'application/json'
-        }
+        },
     }).then((result) => result.json());
-
     await loadReviewData();
 }
 

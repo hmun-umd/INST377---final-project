@@ -67,11 +67,11 @@ app.post('/review', async (req, res) => { //post = add data
     }
 }); 
 
+app.listen(port, () => {
+    console.log(`App is available on port: ${port}`);
+});
+
 //404
 app.use((req,res) => {
     res.status(404).sendFile('public/404.html', { root: __dirname });
-});
-
-app.listen(port, () => {
-    console.log(`App is available on port: ${port}`);
 });
