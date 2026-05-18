@@ -14,6 +14,9 @@
   "author": "Hong Lim Mun",
   "type": "commonjs",
   "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
   "scripts": {
     "start": "nodemon -e '*'",
     "test": "echo \"Error: no test specified\" && exit 1"
