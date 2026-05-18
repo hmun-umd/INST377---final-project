@@ -28,7 +28,7 @@ async function loadReviewData() {
             tableHeadingNickname.innerHTML = 'Nickname';
 
             const tableHeadingFood = document.createElement('th');
-            tableHeadingFood.innerHTML = 'Food';
+            tableHeadingFood.innerHTML = 'Place';
 
             const tableHeadingComment = document.createElement('th');
             tableHeadingComment.innerHTML = 'Comment';
@@ -67,5 +67,5 @@ async function loadReviewData() {
 }
 
 window.onload = function() {
-    loadReviewData;
+    loadReviewData();
 }

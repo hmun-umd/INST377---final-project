@@ -1,0 +1,29 @@
+
+body {
+    background: rgb(220, 215, 184);
+}
+/* Header and Navigation */
+a {
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+#main-nav {
+    background-color: rgb(115, 157, 212);
+    text-align: center;
+}
+
+#main-nav li {
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+}
+
+#main-nav li:hover {
+    background-color: rgb(149, 149, 240);
+    color: white;
+}
+
