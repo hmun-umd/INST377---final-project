@@ -19,7 +19,7 @@ async function loadReviewData() {
         .then((result) => result.json())
         .then((resultJson) => {
             console.log(resultJson);
-            const table =  document.createElement('table');
+            const table =  document.getElementById('reviewTable');
             table.setAttribute('id', 'ReviewInfo');
             // Setting up table heading row
             const tableRow = document.createElement('tr');
