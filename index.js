@@ -15,57 +15,23 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey);
 
+//making pages
 app.get('/', (req, res) => {
-    res.sendFile('public/Customers.html', { root: __dirname });
+    res.sendFile('public/Home.html', { root: __dirname });
 });
 
-app.get('/customers', async (req, res) => {
-    console.log('Attempting to get all customers!');
-
-    const { data, error } = await supabase.from('customer').select();
-
-    if(error){
-        console.log(`Error: ${error}`);
-        res.statusCode = 500;
-        res.send(error);
-    } else {
-        console.log('Recieved Data:', data.length);
-        res.json(data);
-    }   
+app.get('/about', (req, res) => {
+    res.sendFile('public/About.html', { root: __dirname });
 });
 
-app.post('/customer', async (req, res) => { //post = add data
-    console.log('Adding Customer');
-    console.log(`Request: ${JSON.stringify(req.body)}`);
+app.get('/foodie', (req, res) => {
+    res.sendFile('public/Foodie.html', { root: __dirname });
+});
 
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    const state =  req.body.state;
-
-    if(!isValidStateAbbreviation(state)) {
-        console.log(`State: ${state} is invalid`);
-        res.statusCode = 400;
-        res.json({
-            message: `${state} is not a valid 2 Letter Abbreviation for State`,
-        });
-        return;
-    }
-
-    const { data, error } = await supabase.from('customer').insert({
-        customer_first_name: firstName,
-        customer_last_name: lastName,
-        customer_state: state,
-    })
-    .select();
-
-    if(error) {
-        console.log(`Error: ${error}`);
-        res.statusCode = 500;
-        res.send(error);
-    } else {
-        res.json(data);
-    }
-}); 
+//404
+app.use((req,res) => {
+    res.status(404).sendFile('public/404.html', { root: __dirname });
+});
 
 app.listen(port, () => {
     console.log(`App is available on port: ${port}`);
