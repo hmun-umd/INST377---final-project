@@ -28,11 +28,6 @@ app.get('/foodie', (req, res) => {
     res.sendFile('public/Foodie.html', { root: __dirname });
 });
 
-//404
-app.use((req,res) => {
-    res.status(404).sendFile('public/404.html', { root: __dirname });
-});
-
 app.get('/reviews', async (req, res) => {
     console.log('Attempting to get all reviews!');
 
@@ -71,6 +66,11 @@ app.post('/review', async (req, res) => { //post = add data
         res.json(data);
     }
 }); 
+
+//404
+app.use((req,res) => {
+    res.status(404).sendFile('public/404.html', { root: __dirname });
+});
 
 app.listen(port, () => {
     console.log(`App is available on port: ${port}`);

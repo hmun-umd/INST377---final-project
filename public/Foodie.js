@@ -67,5 +67,5 @@ async function loadReviewData() {
 }
 
 window.onload = function() {
-    loadReviewData();
+    loadReviewData;
 }
