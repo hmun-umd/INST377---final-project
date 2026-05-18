@@ -11,6 +11,12 @@ h1 {
     text-align: center;
 }
 
+img {
+    width: 80%;
+    height: 80%;
+    align-items: center;
+}
+
 #main-nav {
     background-color: rgb(115, 157, 212);
     text-align: center;

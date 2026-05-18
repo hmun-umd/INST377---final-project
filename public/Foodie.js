@@ -66,6 +66,38 @@ async function loadReviewData() {
         });
 }
 
+// Food carousel
+async function FoodCarousel(){
+    //console.log('Attempting to add dog images');
+    const usingMocked = false;
+    const hostName = usingMocked? `http://localhost:3000/dogImages`: `https://foodish-api.com/api`;
+    const slideNum = ['slide1','slide2','slide3','slide4','slide5','slide6','slide7','slide8','slide9','slide10'];
+    for(let i = 0; i < 10; i++){
+        await fetch(`${hostName}`)
+        .then((result) => result.json())
+        .then((oneImage) => {
+            //console.log(`${slideNum}`);
+            //console.log(`Object: ${oneImage['message']}`);
+            const img = document.createElement('img');
+            img.src = oneImage['image'];
+            img.alt = slideNum[i];
+            document.getElementById(slideNum[i]).append(img);
+        });
+
+    };
+
+    var swiper = new Swiper('.swiper', {
+        speed: 400,
+        spaceBetween:100,
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });  
+}
+
 window.onload = function() {
     loadReviewData();
+    FoodCarousel();
 }
